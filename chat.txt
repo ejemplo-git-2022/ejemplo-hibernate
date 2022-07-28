@@ -1,0 +1,190 @@
+Cinthia - Asistente Académica to Me (Direct Message) (09:52)
+Hola Claudio, buen dia!
+Unos minutos depsues de las 10 hago la presentacion del curso y te dejo continuar. Tengo otra presentacion antes asi que probablemente la haga 10.05 hs
+Me to Cinthia - Asistente Académica (Direct Message) (09:58)
+ok
+Ivan Santiago Rodriguez-302240 to Everyone (10:04)
+Buen día
+Guillermo Claudiano to Everyone (10:04)
+buen dia
+Cinthia - Asistente Académica to Me (Direct Message) (10:05)
+Diego, si queres comienzo, ya estoy
+Ivan Santiago Rodriguez-302240 to Everyone (10:05)
+jajaja, ya te conocía, terminé java este martes con vos
+Cinthia - Asistente Académica to Me (Direct Message) (10:06)
+Claudio, puedo comenzar la presentacion?
+Me to Cinthia - Asistente Académica (Direct Message) (10:13)
+Si
+Me to Everyone (10:13)
+https://docs.jboss.org/hibernate/core/3.5/reference/es-ES/html/
+Adrian Ricardo Baldessari-712374 to Everyone (10:16)
+todo bien, gracias!
+Ivan Santiago Rodriguez-302240 to Everyone (10:16)
+Ninguna, gracias
+Me to Everyone (10:16)
+https://dev.mysql.com/downloads/installer/
+Cinthia - Asistente Académica to Everyone (10:17)
+Correo Alumnos: alumnos@educacionit.com
+Correo Soporte: soporteonline@educacionit.com
+Alumni: https://alumni.education/
+Me to Everyone (10:20)
+create database primerospasos;
+edu.curso.java.ejemplohibernate
+primero-ejemplo-hibernate
+Camilo Quiroga-73496 to Everyone (10:24)
+consulta despues vas a subir el proyecto?
+Camilo Quiroga-73496 to Everyone (10:25)
+ok si yo siempre lo hago aparte pero por si hay algún error
+Me to Everyone (10:27)
+<dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.13</version>
+        </dependency>
+<dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.3.7.Final</version>
+        </dependency>
+Ivan Santiago Rodriguez-302240 to Everyone (10:27)
+Si
+Guillermo Claudiano to Everyone (10:27)
+si
+Camilo Quiroga-73496 to Everyone (10:27)
+conexion a server, no?
+Ivan Santiago Rodriguez-302240 to Everyone (10:28)
+ctrl + shift + f es para formatear
+🤣
+Guillermo Claudiano to Everyone (10:31)
+si tuviéramos una versión diferente de mysql ya intalada cambiamos el pom.xml ahí en donde dice versión ?
+Me to Everyone (10:31)
+<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>8.0.30</version>
+</dependency>
+Me to Everyone (10:32)
+<dependency>
+    	<groupId>org.hibernate</groupId>
+    	<artifactId>hibernate-core</artifactId>
+    	<version>5.3.7.Final</version>
+    </dependency>
+        
+	<dependency>
+	    <groupId>mysql</groupId>
+	    <artifactId>mysql-connector-java</artifactId>
+	    <version>8.0.30</version>
+	</dependency>
+Me to Everyone (10:36)
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+Me to Everyone (10:36)
+<!-- JDBC Database connection settings -->
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/primerospasos</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">root</property>
+        <!-- Select our SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+        <!-- Echo the SQL to stdout -->
+        <property name="show_sql">true</property>
+        <!-- Set the current session context -->
+        <property name="current_session_context_class">thread</property>
+        <!-- Drop and create the database schema on startup -->
+        <property name="hbm2ddl.auto">update</property>
+Me to Everyone (10:36)
+<mapping class="xxxxxxxxxxxxxxx.clasexxxxxxxx" />
+    </session-factory>
+</hibernate-configuration>
+Me to Everyone (10:44)
+edu.curso.java.ejemplohibernate
+import javax.persistence.*;
+Camilo Quiroga-73496 to Everyone (10:46)
+al final podes guardar el chat y enviarlo junto con la clase porque estoy desde el celu y no puedo guardarlo
+Ivan Santiago Rodriguez-302240 to Everyone (10:46)
+A mi me sale lo mismo
+Guillermo Claudiano to Everyone (10:47)
+La tabla producto la va a crear automáticamente cuando se ejecute la app ?
+pero en este caso con hibernate si ?
+update
+ok
+El @Entity es para que esa clase se mapee con una tabla ?
+ok
+en mongodb  daría error el tag @table  ?
+oko
+ok
+Adrian Ricardo Baldessari-712374 to Everyone (10:53)
+tenes que mapear 1 a 1 todas las clases que se van a almacenar, como hiciste recién en el archivo hibernate.cfg.xml, verdad?
+ahh perfecto
+Guillermo Claudiano to Everyone (10:55)
+Spring te automatiza todo esta configuracion ?
+exacto
+claro
+Me to Everyone (10:56)
+HibernateUtil
+Me to Everyone (10:57)
+private static StandardServiceRegistry registry;
+    private static SessionFactory sessionFactory;
+Me to Everyone (10:57)
+public static SessionFactory getSessionFactory() {
+        if (sessionFactory == null) {
+            try {
+                // Create registry
+                registry = new StandardServiceRegistryBuilder().configure().build();
+
+                // Create MetadataSources
+                MetadataSources sources = new MetadataSources(registry);
+
+                // Create Metadata
+                Metadata metadata = sources.getMetadataBuilder().build();
+
+                // Create SessionFactory
+                sessionFactory = metadata.getSessionFactoryBuilder().build();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                if (registry != null) {
+                    StandardServiceRegistryBuilder.destroy(registry);
+                }
+            }
+        }
+        return sessionFactory;
+    }
+Me to Everyone (10:57)
+public static void shutdown() {
+        if (registry != null) {
+            StandardServiceRegistryBuilder.destroy(registry);
+        }
+    }
+Me to Everyone (10:57)
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+Guillermo Claudiano to Everyone (11:02)
+para que el shutdown ? que haría ?
+ok
+Me to Everyone (11:05)
+<dependency>
+	    <groupId>jakarta.xml.bind</groupId>
+	    <artifactId>jakarta.xml.bind-api</artifactId>
+	    <version>2.3.2</version>
+	</dependency>
+	
+	<!-- Runtime, com.sun.xml.bind module -->
+	<dependency>
+	    <groupId>org.glassfish.jaxb</groupId>
+	    <artifactId>jaxb-runtime</artifactId>
+	    <version>2.3.2</version>
+	</dependency>
+Guillermo Claudiano to Everyone (11:06)
+cuando nos bajemos el proyecto como lo importamos al eclipse ?
+Camilo Quiroga-73496 to Everyone (11:10)
+disculpa pero cuando veo el video grabado por alumni, es un reproductor de video sin la opción de acceder a el chat de la clase, por eso te pido si podes guardarla y subirla. es un archivo txt. ya que en el chat hay mucha info
+Me to Everyone (11:12)
+https://github.com/ejemplo-git-2022/ejemplo-hibernate
