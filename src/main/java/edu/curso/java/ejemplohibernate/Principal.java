@@ -8,15 +8,28 @@ public class Principal {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Producto producto1 = new Producto();
-		producto1.setNombre("Notebook LG X123");
-		producto1.setPrecio(190000.50);
 		
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction transaction = session.beginTransaction();
-		
+
+		//Ejemplo SAVE
+		Producto producto1 = new Producto();
+		producto1.setNombre("TV LCD 52");
+		producto1.setPrecio(4390000.50);
 		session.save(producto1);
 		System.out.println("Id generado: " + producto1.getId());
+		
+		//Ejemplo LOAD
+		//Long idBuscar = 1L;
+		//Producto producto = session.load(Producto.class, idBuscar);
+		//System.out.println("Producto recuperado: " + producto.getNombre());
+		//producto.setNombre("Nuevo nombre ejemplo");
+		
+		//Ejemplo UPDATE
+		//session.update(producto);
+		
+		//Ejemplo DELETE
+		//session.delete(producto);
 		
 		transaction.commit();
 		session.close();

@@ -2,6 +2,8 @@ package edu.curso.java.ejemplohibernate;
 
 import javax.persistence.*;
 
+
+
 @Entity
 @Table(name = "productos")
 public class Producto {
